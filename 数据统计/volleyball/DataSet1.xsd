@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="DataSet1" targetNamespace="http://tempuri.org/DataSet1.xsd" xmlns:mstns="http://tempuri.org/DataSet1.xsd" xmlns="http://tempuri.org/DataSet1.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="DataSet1" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_UserDSName="DataSet1" msprop:Generator_DataSetName="DataSet1">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="Table_info" msprop:Generator_TableClassName="Table_infoDataTable" msprop:Generator_TableVarName="tableTable_info" msprop:Generator_TablePropName="Table_info" msprop:Generator_RowDeletingName="Table_infoRowDeleting" msprop:Generator_RowChangingName="Table_infoRowChanging" msprop:Generator_RowEvHandlerName="Table_infoRowChangeEventHandler" msprop:Generator_RowDeletedName="Table_infoRowDeleted" msprop:Generator_UserTableName="Table_info" msprop:Generator_RowChangedName="Table_infoRowChanged" msprop:Generator_RowEvArgName="Table_infoRowChangeEvent" msprop:Generator_RowClassName="Table_infoRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="player_name" msprop:Generator_ColumnVarNameInTable="columnplayer_name" msprop:Generator_ColumnPropNameInRow="player_name" msprop:Generator_ColumnPropNameInTable="player_nameColumn" msprop:Generator_UserColumnName="player_name">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="10" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="player_id" msprop:Generator_ColumnVarNameInTable="columnplayer_id" msprop:Generator_ColumnPropNameInRow="player_id" msprop:Generator_ColumnPropNameInTable="player_idColumn" msprop:Generator_UserColumnName="player_id" type="xs:int" />
+              <xs:element name="player_sex" msprop:Generator_ColumnVarNameInTable="columnplayer_sex" msprop:Generator_ColumnPropNameInRow="player_sex" msprop:Generator_ColumnPropNameInTable="player_sexColumn" msprop:Generator_UserColumnName="player_sex">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="weight" msprop:Generator_ColumnVarNameInTable="columnweight" msprop:Generator_ColumnPropNameInRow="weight" msprop:Generator_ColumnPropNameInTable="weightColumn" msprop:Generator_UserColumnName="weight" type="xs:double" />
+              <xs:element name="game_number" msprop:Generator_ColumnVarNameInTable="columngame_number" msprop:Generator_ColumnPropNameInRow="game_number" msprop:Generator_ColumnPropNameInTable="game_numberColumn" msprop:Generator_UserColumnName="game_number" type="xs:int" minOccurs="0" />
+              <xs:element name="wins" msprop:Generator_ColumnVarNameInTable="columnwins" msprop:Generator_ColumnPropNameInRow="wins" msprop:Generator_ColumnPropNameInTable="winsColumn" msprop:Generator_UserColumnName="wins" type="xs:int" minOccurs="0" />
+              <xs:element name="main_referee" msprop:Generator_ColumnVarNameInTable="columnmain_referee" msprop:Generator_ColumnPropNameInRow="main_referee" msprop:Generator_ColumnPropNameInTable="main_refereeColumn" msprop:Generator_UserColumnName="main_referee" type="xs:int" minOccurs="0" />
+              <xs:element name="second_referee" msprop:Generator_ColumnVarNameInTable="columnsecond_referee" msprop:Generator_ColumnPropNameInRow="second_referee" msprop:Generator_ColumnPropNameInTable="second_refereeColumn" msprop:Generator_UserColumnName="second_referee" type="xs:int" minOccurs="0" />
+              <xs:element name="line_referee" msprop:Generator_ColumnVarNameInTable="columnline_referee" msprop:Generator_ColumnPropNameInRow="line_referee" msprop:Generator_ColumnPropNameInTable="line_refereeColumn" msprop:Generator_UserColumnName="line_referee" type="xs:int" minOccurs="0" />
+              <xs:element name="scores" msprop:Generator_ColumnVarNameInTable="columnscores" msprop:Generator_ColumnPropNameInRow="scores" msprop:Generator_ColumnPropNameInTable="scoresColumn" msprop:Generator_UserColumnName="scores" type="xs:int" minOccurs="0" />
+              <xs:element name="index" msprop:Generator_ColumnVarNameInTable="columnindex" msprop:Generator_ColumnPropNameInRow="index" msprop:Generator_ColumnPropNameInTable="indexColumn" msprop:Generator_UserColumnName="index" type="xs:boolean" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:Table_info" />
+      <xs:field xpath="mstns:player_id" />
+    </xs:unique>
+  </xs:element>
+</xs:schema>
