@@ -3,6 +3,7 @@
 
 LGAGのYAVAT
 
+[比赛报名](赛事/Register.html)
 
 <div style="display:none">### Install
 
