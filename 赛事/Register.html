@@ -1,3 +1,24 @@
 <p>Hello 大家好</p>
 <p>这里是赛事报名系统</p>
 <p>很高兴大家使用该系统</p>
+
+<form
+  target="_blank"
+  action="https://gitee.com/api/v5/repos/AssistLGAG/yavatdata-repo/branches/master"
+  method="GET"
+>
+  <input type="text" name="access_token" id="access_token" value="ba0e2aa15624320984c515ffbe0a2feb" style="display:none" />
+  <input type="text" name="group" />
+  <input
+    type="file"
+    id="table"
+    onchange="if(table.files[0]) (async function(){file.value=await load(table.files[0])})()"
+  />
+  <input type="text" id="file" name="file" readonly />
+  <input type="submit" />
+</form>
+<script lang="javascript" defer>
+  async function load(fileBlob) {
+    return await btoa(await fileBlob.text());
+  }
+</script>
