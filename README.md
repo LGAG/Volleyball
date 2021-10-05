@@ -19,7 +19,7 @@ LGAGのYAVAT
 
 ### Contributing
 
-Feel free to dive in! Open an issue or submit PRs.
+Feel free to dive in! Open an issue or submit PRs.<br>
 Thanks @TheVeryDarkness's help
 
 ### License
