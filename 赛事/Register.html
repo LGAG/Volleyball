@@ -5,7 +5,7 @@
 
 <form
   target="_blank"
-  action="https://gitee.com/api/v5/repos/AssistLGAG/yavatdata-repo/contents/championship/testX.excel"
+  action="https://gitee.com/api/v5/repos/AssistLGAG/yavatdata-repo/contents/championship/testX.xlsx"
   method="POST"
   name="register">
   
@@ -38,7 +38,7 @@
         reader.onload = function (e) { 
 			document.getElementById("content").value=this.result.substring(this.result.indexOf(',')+1); 
 			document.getElementById("message").value="Update " + document.getElementById("group").value;
-			document.register.action="https://gitee.com/api/v5/repos/AssistLGAG/yavatdata-repo/contents/championship/" + document.getElementById("group").value + ".excel";
+			document.register.action="https://gitee.com/api/v5/repos/AssistLGAG/yavatdata-repo/contents/championship/" + document.getElementById("group").value + ".xlsx";
 		}
  
     
