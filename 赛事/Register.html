@@ -2,46 +2,33 @@
 <p>这里是赛事报名系统</p>
 <p>很高兴大家使用该系统</p>
 
-
-<form
-  target="_blank"
-  action="https://gitee.com/api/v5/repos/AssistLGAG/yavatdata-repo/contents/championship/testX.xlsx"
-  method="POST"
-  name="register">
-  
-  <input type="text" name="access_token" value="ba0e2aa15624320984c515ffbe0a2feb" style="display:none" />
-  <input type="text" name="content" id="content" value="" style="display:none" />
-  <input type="text" name="message" id="message" value="Update excel file" style="display:none" />
-  <p>队伍名*：<input type="text" name="group" id="group" /></p>
-  <p>报名表*：<input type="file" id="fielinput" /></p>
-  <select>
-    <option value="create"> 报名 </option>
-	<option value="update"> 修改 </option>
-	<option value="delete"> 删除 </option>
+<form name="register" action="javascript:submit()">
+  <div>
+    <label>队伍名*：</label>
+    <input
+      type="text"
+      id="groupName"
+      title="Group name begin operated"
+      required
+    />
+  </div>
+  <div>
+    <label>报名表*：</label>
+    <input
+      type="file"
+      id="fileToBeUploaded"
+      title="File to be uploaded"
+      accept=".xlsx"
+    />
+  </div>
+  </div>
+  <select id="selectSubmitMode" required>
+    <option value="create">报名</option>
+    <option value="update">修改</option>
+    <option value="delete">删除</option>
+    <option value="download">下载</option>
   </select>
-  <input type="submit" value="提交" />
+  <input type="submit" id="buttonSubmit" title="Submit" disabled />
 </form>
-<script>
-    window.onload = function () {
-        var input = document.getElementById("fielinput");
-        if (typeof (FileReader) === 'undefined') {
-            result.innerHTML = "抱歉，你的浏览器不支持 FileReader，请使用现代浏览器操作！";
-            input.setAttribute('disabled', 'disabled');
-        } else {
-            input.addEventListener('change', readFile, false);
-        }
-    }
-    function readFile() {
-        var file = this.files[0];
-        var reader = new FileReader();
-        reader.readAsDataURL(file);
-        reader.onload = function (e) { 
-			document.getElementById("content").value=this.result.substring(this.result.indexOf(',')+1); 
-			document.getElementById("message").value="Update " + document.getElementById("group").value;
-			document.register.action="https://gitee.com/api/v5/repos/AssistLGAG/yavatdata-repo/contents/championship/" + document.getElementById("group").value + ".xlsx";
-		}
- 
-    
-    }
- 
-</script>
+
+<script lang="en" defer src="./Register.js"></script>

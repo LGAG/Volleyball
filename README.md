@@ -1,27 +1,25 @@
 # Volleyball
+
 [![standard-readme compliant](https://img.shields.io/badge/readme%20style-standard-brightgreen.svg?style=flat-square)](https://github.com/RichardLitt/standard-readme)
 
-LGAGのYAVAT
+LGAG の YAVAT
 
-[比赛报名](赛事/Register.html)
+Github网页由[此](http://lgag.github.io/Volleyball)进入。
 
-### Install
+比赛报名由[此](赛事/Register.html)进入（请从网页而不是存储库进入）。
 
-```
-暂无
-```
+## Install
 
-### Usage
+Just compile what you need.
 
-```
-暂无
-```
+## Usage
 
-### Contributing
+Run the executable or visit the webpage.
 
-Feel free to dive in! Open an issue or submit PRs.<br>
-Thanks @TheVeryDarkness's help
+## Contributing
 
-### License
+Feel free to dive in! Open an issue or submit PRs.
+
+## License
 
 BIT © Armand Logic
