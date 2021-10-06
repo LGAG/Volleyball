@@ -24,6 +24,9 @@ function headers() {
 function token() {
   return "ba0e2aa15624320984c515ffbe0a2feb";
 }
+function baseURL() {
+  return "https://gitee.com/api/v5/repos/AssistLGAG/yavatdata-repo/contents/报名表";
+}
 function getFileNameOnRemote() {
   const group = document.getElementById("groupName").value;
   return group + ".xlsx";
@@ -32,10 +35,7 @@ function getFileNameOnRemote() {
 async function requestFile(fileNameOnRemote) {
   if (!fileNameOnRemote) throw fileNameOnRemote;
   const requestToGetSha = new Request(
-    "https://gitee.com/api/v5/repos/AssistLGAG/yavatdata-repo/contents/" +
-      fileNameOnRemote +
-      "?access_token=" +
-      token(),
+    baseURL() + fileNameOnRemote + "?access_token=" + token(),
     { method: "get" }
   );
   return await fetch(requestToGetSha);
@@ -77,19 +77,15 @@ async function upload() {
   const fileContent = await getFileContent();
   const fileNameOnRemote = getFileNameOnRemote();
 
-  const request = new Request(
-    "https://gitee.com/api/v5/repos/AssistLGAG/yavatdata-repo/contents/" +
-      fileNameOnRemote,
-    {
-      method: "post",
-      headers: headers(),
-      body: JSON.stringify({
-        access_token: token(),
-        content: fileContent,
-        message: "Create " + fileNameOnRemote,
-      }),
-    }
-  );
+  const request = new Request(baseURL() + fileNameOnRemote, {
+    method: "post",
+    headers: headers(),
+    body: JSON.stringify({
+      access_token: token(),
+      content: fileContent,
+      message: "Create " + fileNameOnRemote,
+    }),
+  });
   const response = await fetch(request);
   if (!response.ok) alert("上传失败！原因为：" + (await response.text()));
 }
@@ -100,20 +96,16 @@ async function update() {
 
   const fileContentToBeUploaded = await getFileContent();
 
-  const request = new Request(
-    "https://gitee.com/api/v5/repos/AssistLGAG/yavatdata-repo/contents/" +
-      fileNameOnRemote,
-    {
-      method: "put",
-      headers: headers(),
-      body: JSON.stringify({
-        access_token: token(),
-        sha: sha,
-        content: fileContentToBeUploaded,
-        message: "Delete " + fileNameOnRemote,
-      }),
-    }
-  );
+  const request = new Request(baseURL() + fileNameOnRemote, {
+    method: "put",
+    headers: headers(),
+    body: JSON.stringify({
+      access_token: token(),
+      sha: sha,
+      content: fileContentToBeUploaded,
+      message: "Delete " + fileNameOnRemote,
+    }),
+  });
   const response = await fetch(request);
   if (!response.ok) alert("更新失败！原因为：" + (await response.text()));
 }
@@ -134,19 +126,15 @@ async function remove() {
   const fileNameOnRemote = getFileNameOnRemote();
   const sha = await requestFileSha(fileNameOnRemote);
 
-  const request = new Request(
-    "https://gitee.com/api/v5/repos/AssistLGAG/yavatdata-repo/contents/" +
-      fileNameOnRemote,
-    {
-      method: "delete",
-      headers: headers(),
-      body: JSON.stringify({
-        access_token: token(),
-        sha: sha,
-        message: "Delete " + fileNameOnRemote,
-      }),
-    }
-  );
+  const request = new Request(baseURL() + fileNameOnRemote, {
+    method: "delete",
+    headers: headers(),
+    body: JSON.stringify({
+      access_token: token(),
+      sha: sha,
+      message: "Delete " + fileNameOnRemote,
+    }),
+  });
   const response = await fetch(request);
   if (!response.ok) alert("删除失败！原因为：" + (await response.text()));
 }
