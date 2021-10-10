@@ -147,7 +147,7 @@ async function submit() {
     if (mode == "create") await upload();
     else if (mode == "update") await update();
     else if (mode == "delete") await remove();
-    else if (mode == "download") await download();
+    //else if (mode == "download") await download();
     else console.error("Unrecognized mode.");
   } catch (error) {
     alert(error);
