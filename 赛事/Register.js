@@ -25,7 +25,7 @@ function token() {
   return "ba0e2aa15624320984c515ffbe0a2feb";
 }
 function baseURL() {
-  return "https://gitee.com/api/v5/repos/AssistLGAG/yavatdata-repo/contents/报名表";
+  return "https://gitee.com/api/v5/repos/AssistLGAG/yavatdata-repo/contents/championship/";
 }
 function getFileNameOnRemote() {
   const group = document.getElementById("groupName").value;
@@ -103,7 +103,7 @@ async function update() {
       access_token: token(),
       sha: sha,
       content: fileContentToBeUploaded,
-      message: "Delete " + fileNameOnRemote,
+      message: "Update " + fileNameOnRemote,
     }),
   });
   const response = await fetch(request);
