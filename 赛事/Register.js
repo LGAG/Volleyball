@@ -29,9 +29,17 @@ function baseURL() {
 }
 function getFileNameOnRemote() {
   const group = document.getElementById("groupName").value;
-  return group + ".xlsx";
+  return group + getFileType();
 }
-
+function getFileType(){
+  var filename = document.getElementById("fileToBeUploaded").value;
+  var fileType = filename.substring(filename.lastIndexOf('.'));
+  if(fileType != ".doc" && fileType != ".docx" && fileType != ".xls" && fileType != ".xlsx"){
+    alert("只接受word或者excel文件");
+    return ".";
+  }
+  return fileType;
+}
 async function requestFile(fileNameOnRemote) {
   if (!fileNameOnRemote) throw fileNameOnRemote;
   const requestToGetSha = new Request(
