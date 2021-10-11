@@ -15,7 +15,8 @@ function checkSubmitAvailability() {
   const groupSpecified = !!groupNameInput.value;
   const avail =
     (fileExists || ["delete", "download"].indexOf(mode) != -1) &&
-    groupSpecified;
+    groupSpecified &&
+    mode != "download";
   changeSubmitAvailability(!avail);
 }
 function headers() {
@@ -117,6 +118,7 @@ async function download() {
   a.href =
     "data:application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;base64," +
     content;
+  a.download = fileNameOnRemote;
   document.body.appendChild(a);
   a.click();
   document.body.removeChild(a);
@@ -147,7 +149,7 @@ async function submit() {
     if (mode == "create") await upload();
     else if (mode == "update") await update();
     else if (mode == "delete") await remove();
-    //else if (mode == "download") await download();
+    else if (mode == "download") await download();
     else console.error("Unrecognized mode.");
   } catch (error) {
     alert(error);
