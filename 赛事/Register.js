@@ -15,8 +15,7 @@ function checkSubmitAvailability() {
   const groupSpecified = !!groupNameInput.value;
   const avail =
     (fileExists || ["delete", "download"].indexOf(mode) != -1) &&
-    groupSpecified &&
-    mode != "download";
+    groupSpecified;
   changeSubmitAvailability(!avail);
 }
 function headers() {
