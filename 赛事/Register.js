@@ -27,9 +27,10 @@ function token() {
 function baseURL() {
   return "https://gitee.com/api/v5/repos/AssistLGAG/yavatdata-repo/contents/championship/";
 }
-function getFileNameOnRemote() {
+function getFileNameOnRemote(CommandType) { //CommandType为0时表示不需要上传文件，因此直接从输入框获取文件名
   const group = document.getElementById("groupName").value;
-  return group + getFileType();
+  if(CommandType == 0) return group;
+  else return group + getFileType();
 }
 function getFileType(){
   var filename = document.getElementById("fileToBeUploaded").value;
@@ -82,7 +83,7 @@ async function getFileContent() {
 }
 
 async function upload() {
-  const fileContent = await getFileContent();
+  const fileContent = await getFileContent(1);
   const fileNameOnRemote = getFileNameOnRemote();
 
   const request = new Request(baseURL() + fileNameOnRemote, {
@@ -99,7 +100,7 @@ async function upload() {
 }
 
 async function update() {
-  const fileNameOnRemote = getFileNameOnRemote();
+  const fileNameOnRemote = getFileNameOnRemote(1);
   const sha = await requestFileSha(fileNameOnRemote);
 
   const fileContentToBeUploaded = await getFileContent();
@@ -119,7 +120,7 @@ async function update() {
 }
 
 async function download() {
-  const fileNameOnRemote = getFileNameOnRemote();
+  const fileNameOnRemote = getFileNameOnRemote(0);
   const content = await requestFileContent(fileNameOnRemote);
   const a = document.createElement("a");
   a.href =
@@ -132,7 +133,7 @@ async function download() {
 }
 
 async function remove() {
-  const fileNameOnRemote = getFileNameOnRemote();
+  const fileNameOnRemote = getFileNameOnRemote(0);
   const sha = await requestFileSha(fileNameOnRemote);
 
   const request = new Request(baseURL() + fileNameOnRemote, {
