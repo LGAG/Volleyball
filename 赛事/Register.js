@@ -1,3 +1,7 @@
+/*
+ * A file in https://github.com/LGAG/Volleyball.
+ * Access the reposity for license.
+ */
 function changeSubmitAvailability(disable) {
   const btn = document.getElementById("buttonSubmit");
   btn.disabled = disable;
@@ -18,14 +22,9 @@ function checkSubmitAvailability() {
     groupSpecified;
   changeSubmitAvailability(!avail);
 }
+
 function headers() {
   return new Headers({ "Content-Type": "application/json;charset=UTF-8" });
-}
-function token() {
-  return "ba0e2aa15624320984c515ffbe0a2feb";
-}
-function baseURL() {
-  return "https://gitee.com/api/v5/repos/AssistLGAG/yavatdata-repo/contents/championship/";
 }
 function newRequest(method, url, body) {
   if (method == "get") {
@@ -45,6 +44,13 @@ function newRequest(method, url, body) {
       body: JSON.stringify(body),
     });
   }
+}
+
+function token() {
+  return "ba0e2aa15624320984c515ffbe0a2feb";
+}
+function baseURL() {
+  return "https://gitee.com/api/v5/repos/AssistLGAG/yavatdata-repo/contents/championship/";
 }
 
 function getFileNameOnRemote(CommandType) {
@@ -67,6 +73,7 @@ function getFileType() {
   }
   return fileType;
 }
+
 async function requestFile(fileNameOnRemote) {
   if (!fileNameOnRemote) throw fileNameOnRemote;
   const requestToGetSha = newRequest("get", baseURL() + fileNameOnRemote, {
