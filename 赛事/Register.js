@@ -83,8 +83,8 @@ async function getFileContent() {
 }
 
 async function upload() {
-  const fileContent = await getFileContent(1);
-  const fileNameOnRemote = getFileNameOnRemote();
+  const fileContent = await getFileContent();
+  const fileNameOnRemote = getFileNameOnRemote(1);
 
   const request = new Request(baseURL() + fileNameOnRemote, {
     method: "post",
