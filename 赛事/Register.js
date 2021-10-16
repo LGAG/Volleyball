@@ -1,3 +1,7 @@
+/*
+ * A file in https://github.com/LGAG/Volleyball.
+ * Access the reposity for license.
+ */
 function changeSubmitAvailability(disable) {
   const btn = document.getElementById("buttonSubmit");
   btn.disabled = disable;
@@ -18,35 +22,63 @@ function checkSubmitAvailability() {
     groupSpecified;
   changeSubmitAvailability(!avail);
 }
+
 function headers() {
   return new Headers({ "Content-Type": "application/json;charset=UTF-8" });
 }
+function newRequest(method, url, body) {
+  if (method == "get") {
+    var _url = toString(url);
+    var isFirst = true;
+    for (const key in body) {
+      const value = body[key];
+      _url += isFirst ? "?" : "&";
+      isFirst = false;
+      _url += toString(key) + "=" + toString(value);
+    }
+    return new Request(_url, { method: method });
+  } else {
+    return new Request(url, {
+      method: method,
+      headers: headers(),
+      body: JSON.stringify(body),
+    });
+  }
+}
+
 function token() {
   return "ba0e2aa15624320984c515ffbe0a2feb";
 }
 function baseURL() {
   return "https://gitee.com/api/v5/repos/AssistLGAG/yavatdata-repo/contents/championship/";
 }
-function getFileNameOnRemote(CommandType) { //CommandType为0时表示不需要上传文件，因此直接从输入框获取文件名
+
+function getFileNameOnRemote(CommandType) {
+  //CommandType为0时表示不需要上传文件，因此直接从输入框获取文件名
   const group = document.getElementById("groupName").value;
-  if(CommandType == 0) return group;
+  if (CommandType == 0) return group;
   else return group + getFileType();
 }
-function getFileType(){
+function getFileType() {
   var filename = document.getElementById("fileToBeUploaded").value;
-  var fileType = filename.substring(filename.lastIndexOf('.'));
-  if(fileType != ".doc" && fileType != ".docx" && fileType != ".xls" && fileType != ".xlsx"){
+  var fileType = filename.substring(filename.lastIndexOf("."));
+  if (
+    fileType != ".doc" &&
+    fileType != ".docx" &&
+    fileType != ".xls" &&
+    fileType != ".xlsx"
+  ) {
     alert("只接受word或者excel文件");
     return ".";
   }
   return fileType;
 }
+
 async function requestFile(fileNameOnRemote) {
   if (!fileNameOnRemote) throw fileNameOnRemote;
-  const requestToGetSha = new Request(
-    baseURL() + fileNameOnRemote + "?access_token=" + token(),
-    { method: "get" }
-  );
+  const requestToGetSha = newRequest("get", baseURL() + fileNameOnRemote, {
+    access_token: token(),
+  });
   return await fetch(requestToGetSha);
 }
 async function requestFileSha(fileNameOnRemote) {
@@ -83,17 +115,13 @@ async function getFileContent() {
 }
 
 async function upload() {
-  const fileContent = await getFileContent(1);
-  const fileNameOnRemote = getFileNameOnRemote();
+  const fileContent = await getFileContent();
+  const fileNameOnRemote = getFileNameOnRemote(1);
 
-  const request = new Request(baseURL() + fileNameOnRemote, {
-    method: "post",
-    headers: headers(),
-    body: JSON.stringify({
-      access_token: token(),
-      content: fileContent,
-      message: "Create " + fileNameOnRemote,
-    }),
+  const request = newRequest("post", baseURL() + fileNameOnRemote, {
+    access_token: token(),
+    content: fileContent,
+    message: "Create " + fileNameOnRemote,
   });
   const response = await fetch(request);
   if (!response.ok) alert("上传失败！原因为：" + (await response.text()));
@@ -105,15 +133,11 @@ async function update() {
 
   const fileContentToBeUploaded = await getFileContent();
 
-  const request = new Request(baseURL() + fileNameOnRemote, {
-    method: "put",
-    headers: headers(),
-    body: JSON.stringify({
-      access_token: token(),
-      sha: sha,
-      content: fileContentToBeUploaded,
-      message: "Update " + fileNameOnRemote,
-    }),
+  const request = newRequest("put", baseURL() + fileNameOnRemote, {
+    access_token: token(),
+    sha: sha,
+    content: fileContentToBeUploaded,
+    message: "Update " + fileNameOnRemote,
   });
   const response = await fetch(request);
   if (!response.ok) alert("更新失败！原因为：" + (await response.text()));
@@ -136,14 +160,10 @@ async function remove() {
   const fileNameOnRemote = getFileNameOnRemote(0);
   const sha = await requestFileSha(fileNameOnRemote);
 
-  const request = new Request(baseURL() + fileNameOnRemote, {
-    method: "delete",
-    headers: headers(),
-    body: JSON.stringify({
-      access_token: token(),
-      sha: sha,
-      message: "Delete " + fileNameOnRemote,
-    }),
+  const request = newRequest("delete", baseURL() + fileNameOnRemote, {
+    access_token: token(),
+    sha: sha,
+    message: "Delete " + fileNameOnRemote,
   });
   const response = await fetch(request);
   if (!response.ok) alert("删除失败！原因为：" + (await response.text()));
