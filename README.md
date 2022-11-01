@@ -4,12 +4,17 @@
 
 LGAG の YAVAT
 
-[赛事报名](赛事/Register.html)
+[主页](http://lgag.github.io/Volleyball)
 
+[比赛报名](赛事/Register.html)
+
+## Install
+
+Just compile what you need.
 
 ## Usage
 
-visit the webpage.
+Run the executable or visit the webpage.
 
 ## Contributing
 
