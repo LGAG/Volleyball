@@ -4,15 +4,12 @@
 
 LGAG の YAVAT
 
-[比赛报名](赛事/Register.html)
+[赛事报名](赛事/Register.html)
 
-## Install
-
-Just compile what you need.
 
 ## Usage
 
-Run the executable or visit the webpage.
+visit the webpage.
 
 ## Contributing
 
