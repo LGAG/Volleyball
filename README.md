@@ -4,9 +4,9 @@
 
 LGAG の YAVAT
 
-Github网页由[此](http://lgag.github.io/Volleyball)进入。
+;Github网页由[此](http://lgag.github.io/Volleyball)进入。
 
-比赛报名由[此](赛事/Register.html)进入（请从网页而不是存储库进入）。
+;比赛报名由[此](赛事/Register.html)进入（请从网页而不是存储库进入）。
 
 ## Install
 
